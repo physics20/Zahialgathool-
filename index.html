@@ -17,14 +17,14 @@ a{color:var(--red)}
 .hide{display:none!important}
 .wrap{max-width:760px;margin:0 auto;padding:0 14px}
 .banner{background:var(--red);color:#fff;text-align:center;padding:8px 12px;font-weight:800;font-size:14px}
-.hero{text-align:center;padding:26px 14px 18px;background:linear-gradient(#FDF3E3,#f8e2c0)}
-.logo{width:96px;height:96px;border-radius:50%;object-fit:cover;background:#fff;border:3px solid var(--red);display:grid;place-items:center;font-size:48px;margin:0 auto 8px}
-.hero h1{font-size:34px;color:var(--red);line-height:1.05}
-.hero p{font-style:italic;color:var(--orange);font-weight:700;margin:4px 0 14px}
+.hero{padding:10px 14px 12px;background:linear-gradient(#FDF3E3,#f8e2c0)}.hrow{display:flex;align-items:center;gap:10px;max-width:760px;margin:0 auto}
+.logo{width:56px;height:56px;flex:none;border-radius:50%;object-fit:cover;background:#fff;border:2px solid var(--red);display:grid;place-items:center;font-size:28px}
+.hero h1{font-size:22px;color:var(--red);line-height:1.05}
+.hero p{font-style:italic;color:var(--orange);font-weight:700;font-size:13px;margin:2px 0 0}
 .btn{border:0;border-radius:999px;padding:11px 20px;font-weight:800;cursor:pointer;background:var(--red);color:#fff;text-decoration:none;display:inline-block;font-size:15px}
 .btn.o{background:var(--orange)}.btn.l{background:#fff;color:var(--red);border:2px solid var(--red)}.btn.s{padding:7px 13px;font-size:13px}.btn.g{background:#e9d5b5;color:var(--brown)}
 .btn:disabled{opacity:.5}
-.phones{margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.phones{margin-top:8px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 14px;position:sticky;top:0;background:var(--cream);z-index:5;scrollbar-width:none}
 .tab{white-space:nowrap;border:2px solid var(--line);background:#fff;border-radius:999px;padding:7px 15px;font-weight:800;cursor:pointer}
 .tab.on{background:var(--orange);border-color:var(--orange);color:#fff}
@@ -32,7 +32,7 @@ a{color:var(--red)}
 .card{background:var(--card);border:2px dashed var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
 .card.out{opacity:.55;filter:grayscale(.7)}
 .ph{aspect-ratio:4/3;background:linear-gradient(135deg,var(--orange),var(--red));display:grid;place-items:center;font-size:54px;position:relative}
-.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph{overflow:hidden}.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.pbg{position:absolute;inset:-14px;background-size:cover;background-position:center;filter:blur(14px)}
 .cb{padding:11px;display:flex;flex-direction:column;gap:5px;flex:1}
 .cb h3{font-size:18px;line-height:1.15}.cb small{color:#7a5a45}
 .price{font-family:'Baloo 2';font-weight:800;color:var(--red);font-size:20px}
@@ -55,6 +55,34 @@ textarea{min-height:64px}
 .seg{display:flex;gap:8px}.seg button{flex:1;padding:10px;border-radius:12px;border:2px solid var(--line);background:#fff;font-weight:800;cursor:pointer}.seg .on{background:var(--red);color:#fff;border-color:var(--red)}
 .warn{background:#fff0c9;border:2px solid var(--orange);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:700;margin-top:10px}
 .big{font-family:'Baloo 2';font-size:44px;color:var(--red);text-align:center}
+@keyframes up{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.2)}100%{transform:scale(1)}}
+@keyframes slide{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes wob{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+.hero{border-radius:0 0 28px 28px;box-shadow:0 6px 18px #c8402a1f}
+.logo{animation:wob 3.2s ease-in-out infinite;transform-origin:50% 90%}
+.card{position:relative;border:2px solid var(--line);border-radius:22px;box-shadow:0 4px 14px #c8402a14;transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px #c8402a2e}
+.card.sel{border-color:var(--orange);box-shadow:0 6px 22px #e8742a66;background:#fff3df}
+.grid.anim .card{animation:up .5s both}
+.qb{position:absolute;top:8px;right:8px;min-width:34px;height:30px;border-radius:15px;background:var(--red);color:#fff;font-weight:800;display:grid;place-items:center;padding:0 9px;z-index:2;box-shadow:0 2px 8px #0005}
+.qb.pop,.cartbar.bump{animation:pop .38s}
+.step{display:flex;align-items:center;justify-content:space-between;background:var(--orange);color:#fff;border-radius:999px;padding:3px;margin-top:auto}
+.step button{width:34px;height:34px;border-radius:50%;border:0;background:#fff;color:var(--red);font-weight:800;font-size:20px;cursor:pointer;transition:transform .12s}.step button:active{transform:scale(.85)}
+.btn{transition:transform .15s,filter .15s}.btn:active{transform:scale(.94)}
+.tab{transition:background .2s,color .2s,transform .15s}.tab:active{transform:scale(.94)}
+.sheet{animation:fade .2s}.sheet>div{animation:slide .32s cubic-bezier(.2,.8,.2,1)}
+footer{border-radius:28px 28px 0 0}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.chips.swipe{flex-wrap:nowrap;overflow-x:auto;margin:10px -14px 0;padding:2px 14px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.chips.swipe::-webkit-scrollbar{display:none}.chips.swipe .chip{flex:none;white-space:nowrap;padding:7px 14px;font-size:14px}
+.vars{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 4px}.vchip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:4px 11px;font-weight:800;font-size:13px;cursor:pointer;transition:all .15s}.vchip.on{background:var(--brown);border-color:var(--brown);color:#fff}
+.gh{font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--red);font-size:18px;margin:16px 0 2px;border-bottom:2px solid var(--line)}
+.promos{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 14px 4px;scrollbar-width:none}.promos::-webkit-scrollbar{display:none}
+.slide{position:relative;flex:0 0 88%;max-width:520px;scroll-snap-align:center;border-radius:22px;overflow:hidden;box-shadow:0 6px 18px #c8402a33}
+.slide .ph{aspect-ratio:16/9;font-size:64px}.slide .ph img{object-fit:cover}
+.ov{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(transparent,#000b);color:#fff;display:flex;flex-direction:column;gap:2px}.ov b{font-family:'Baloo 2',sans-serif;font-size:22px;line-height:1.1}.ov span{font-size:14px;font-weight:700}
+.payb{background:#fff;border:2px dashed var(--orange);border-radius:14px;padding:10px;margin-top:10px;text-align:left;display:flex;flex-direction:column;gap:6px}.pl{display:flex;align-items:center;gap:8px;font-size:14px}.pl span{color:#7a5a45;min-width:104px}.pl b{flex:1;word-break:break-all}
 /* admin */
 .panel{background:#fff9ef;border:2px solid var(--line);border-radius:16px;padding:12px;margin:10px 0}
 .alert{background:#b00020;color:#fff;padding:10px 14px;font-weight:800;text-align:center}
@@ -62,7 +90,7 @@ textarea{min-height:64px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stats div{background:#fff;border-radius:12px;padding:8px;text-align:center;font-size:13px}.stats b{display:block;color:var(--red);font-size:16px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:800;cursor:pointer}.chip.on{background:var(--brown);color:#fff;border-color:var(--brown)}
-.dot{display:inline-block;background:#e00;color:#fff;border-radius:999px;padding:0 7px;font-size:12px;margin-left:4px}
+.ocard{background:#fff9ef;border:2px solid var(--line);border-radius:16px;padding:12px;margin:10px 0;display:flex;flex-direction:column;gap:4px}.ocard ul{margin:2px 0 4px 18px}.badge{font-weight:800;font-size:12px;color:#fff;border-radius:999px;padding:1px 9px}.dot{display:inline-block;background:#e00;color:#fff;border-radius:999px;padding:0 7px;font-size:12px;margin-left:4px}
 .mi{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line)}
 .mi .ph{width:64px;aspect-ratio:1;border-radius:12px;font-size:28px;flex:none;overflow:hidden}
 .mi>div:nth-child(2){flex:1;min-width:0}
@@ -75,8 +103,8 @@ textarea{min-height:64px}
 <script type="module">
 // @ts-nocheck
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, reauthenticateWithCredential, EmailAuthProvider, updatePassword } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-import { getFirestore, collection, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, orderBy, limit, runTransaction, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, reauthenticateWithCredential, EmailAuthProvider, updatePassword, createUserWithEmailAndPassword, updateProfile, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { getFirestore, collection, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, getDocs, where, query, orderBy, limit, runTransaction, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyArAQungTeBXlP4PlF7Bd2Acmh5HwmoPPY",
@@ -89,30 +117,32 @@ const firebaseConfig = {
 const ADMIN_EMAIL = "admin@yummy.mn";
 const app = initializeApp(firebaseConfig), auth = getAuth(app), db = getFirestore(app);
 
-const CATS = ["Тахиа","Холимог","Сет","Торт","Бусад"], EMO = {"Тахиа":"🍗","Холимог":"🍗","Сет":"🍱","Торт":"🎂","Бусад":"🍽️"};
+const CATS = ["Тахиа","Холимог","Сет","Торт","Бусад"], EMO = {"Тахиа":"🍗","Холимог":"🍗","Сет":"🍱","Торт":"🎂","Бусад":"🍽️","Промо":"🔥"};
 const STATUS = [["new","Шинэ"],["confirmed","Баталсан"],["preparing","Бэлдэж байна"],["delivering","Хүргэлтэнд"],["done","Дууссан"],["cancelled","Цуцалсан"]];
-const DEF = { name:"Yummy cakes & chicken", slogan:"life is short, eat more chicken", phones:["90209202","80018372"], address:"Хөвсгөл мөрөн, 4-р хороо, Orange Center", facebook:"https://www.facebook.com/search/top?q=YUMMY%20CAKES%20%26%20CHICKEN", instagram:"https://www.instagram.com/yummmy_cakess", hours:"Өдөр бүр 10:00 - 23:00", banner:"", deliveryFee:5000 };
+const DEF = { name:"Yummy cakes & chicken", slogan:"life is short, eat more chicken", phones:["90209202","80018372"], address:"Хөвсгөл мөрөн, 4-р хороо, Orange Center", facebook:"https://www.facebook.com/search/top?q=YUMMY%20CAKES%20%26%20CHICKEN", instagram:"https://www.instagram.com/yummmy_cakess", hours:"Өдөр бүр 10:00 - 23:00", banner:"", deliveryFee:5000, open:true, requireLogin:false, bankName:"", bankAccount:"", bankOwner:"" };
 const SEED = [
  ["Чихэрлэг халуун ногоотой / Sweet Spicy","Тахиа (S хэмжээ)",18000,"Тахиа"],["Энгийн шарсан / Original Chicken","Тахиа (S хэмжээ)",18000,"Тахиа"],["Шаржигнуур / Crunchy Chicken","Тахиа (S хэмжээ)",18000,"Тахиа"],
  ["Холимог тахиа 2~3 хүн","3 төрлийн тахиа",36000,"Холимог"],["Холимог тахиа 3~4 хүн","3 төрлийн тахиа",54000,"Холимог"],["Холимог тахиа 4~5 хүн","3 төрлийн тахиа",72000,"Холимог"],["Холимог тахиа 5~6 хүн","3 төрлийн тахиа",90000,"Холимог"],["Холимог тахиа 6~7 хүн","3 төрлийн тахиа",108000,"Холимог"],
  ["4н тасалгаатай сет","3 төрлийн цул тахиа + аяган торт. Захиалгаар, 10-аас дээш.",17000,"Сет"],["4н тасалгаатай сет (30-аас дээш)","30-аас дээш захиалгад нэг сетийн үнэ.",16000,"Сет"]];
 
 const $app = document.getElementById("app");
-const h = (t, a = {}, ...c) => { const e = document.createElement(t); for (const [k, v] of Object.entries(a)) { if (k === "class") e.className = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else if (v !== false && v != null) e.setAttribute(k, v); } for (const x of c.flat()) if (x != null && x !== false) e.append(x); return e; };
+const h = (t, a = {}, ...c) => { const e = document.createElement(t); for (const [k, v] of Object.entries(a)) { if (k === "class") e.className = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else if (v !== false && v != null) e.setAttribute(k, v); } for (const x of c.flat(Infinity)) if (x != null && x !== false) e.append(x); return e; };
 const fmt = n => Number(n || 0).toLocaleString("en-US").replace(/,/g, "'") + "₮";
 const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "#";
 const isoDay = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
 const clear = e => { while (e.firstChild) e.removeChild(e.firstChild); return e; };
 
-let settings = { ...DEF }, logo = "", menu = [], menuLoaded = false, menuErr = false;
-const cart = new Map(); let curCat = CATS[0];
+let settings = { ...DEF }, logo = "", menu = [], menuLoaded = false, menuErr = false, promos = [], promoTimer = null, cust = null;
+const selVar = new Map(), priceTxt = m => Array.isArray(m.variants) && m.variants.length ? m.variants.length + " сонголт · " + fmt(Math.min(...m.variants.map(v => v.price))) + "-аас" : fmt(m.price);
+const cart = new Map(); let curCat = CATS[0], uq = "", animGrid = true, lastAdd = null;
 
 /* lazy image cache */
 const imgCache = new Map();
 async function loadImg(id) { if (imgCache.has(id)) return imgCache.get(id); let d = null; try { const s = await getDoc(doc(db, "menuImages", id)); d = s.exists() ? s.data().data : null; } catch { d = null; } imgCache.set(id, d); return d; }
 const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { io.unobserve(en.target); fill(en.target); } }), { rootMargin: "150px" }) : null;
-async function fill(box) { const d = await loadImg(box.dataset.id); if (d && /^data:image\//.test(d)) { clear(box); box.append(h("img", { src: d, alt: box.dataset.alt || "", loading: "lazy" })); } }
-const phBox = m => { const b = h("div", { class: "ph", "data-id": m.id, "data-alt": m.name }, EMO[m.category] || "🍗"); if (io) io.observe(b); else fill(b); return b; };
+const pic = (d, alt) => [h("div", { class: "pbg", style: 'background-image:url("' + d + '")' }), h("img", { src: d, alt: alt, loading: "lazy" })];
+async function fill(box) { const d = await loadImg(box.dataset.id); if (d && /^data:image\//.test(d)) { clear(box); box.append(...pic(d, box.dataset.alt || "")); } }
+const phBox = m => { const b = h("div", { class: "ph", "data-id": m.id, "data-alt": m.name }, EMO[m.category] || "🍗"), c = imgCache.get(m.id); if (c && /^data:image\//.test(c)) { clear(b); b.append(...pic(c, m.name)); } else if (io) io.observe(b); else fill(b); return b; };
 
 /* image compress */
 async function compress(file, maxSide, maxKB) {
@@ -142,50 +172,124 @@ const robots = on => { let m = document.querySelector('meta[name=robots]'); if (
 onSnapshot(doc(db, "settings", "site"), s => { settings = { ...DEF, ...(s.exists() ? s.data() : {}) }; if (!isAdminRoute()) paintUser(); }, () => {});
 onSnapshot(doc(db, "settings", "logo"), s => { logo = s.exists() ? s.data().data || "" : ""; if (!isAdminRoute()) paintUser(); }, () => {});
 onSnapshot(collection(db, "menu"), s => { menu = s.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order || 0) - (b.order || 0)); menuLoaded = true; menuErr = false; if (!isAdminRoute()) paintUser(); adminMenuHook && adminMenuHook(); }, () => { menuErr = true; menuLoaded = true; if (!isAdminRoute()) paintUser(); });
-let adminMenuHook = null;
+let adminMenuHook = null, adminPromoHook = null;
+onAuthStateChanged(auth, u => { cust = u && u.email !== ADMIN_EMAIL ? u : null; if (!isAdminRoute()) paintUser(); });
+onSnapshot(doc(db, "settings", "promos"), sn => { promos = sn.exists() && Array.isArray(sn.data().items) ? sn.data().items : []; if (!isAdminRoute()) paintUser(); adminPromoHook && adminPromoHook(); }, () => {});
 const isAdminRoute = () => location.pathname.replace(/\/+$/, "").endsWith("/admin") || location.hash === "#admin";
 
 /* ---------- USER PAGE ---------- */
 function renderUser() { if (adminCleanup) { adminCleanup(); adminCleanup = null; } robots(false); document.title = settings.name; paintUser(); }
 function cartTotals(type) { let sub = 0, n = 0; cart.forEach(i => { sub += i.price * i.qty; n += i.qty; }); const fee = type === "delivery" && n ? Number(settings.deliveryFee) || 0 : 0; return { sub, n, fee, total: sub + fee }; }
+const s0Closed = () => settings.open === false;
 function paintUser() {
   if (isAdminRoute()) return;
   const sc = scrollY; clear($app);
-  const s = settings;
+  const s = settings, closed = s0Closed(), menuV = menu;
   if (s.banner) $app.append(h("div", { class: "banner" }, s.banner));
+  if (closed) $app.append(h("div", { class: "banner", style: "background:#4A2A1A" }, "😴 Одоогоор хаалттай байна. Нээгдсэний дараа захиалга өгнө үү."));
   const lg = logo && /^data:image\//.test(logo) ? h("img", { class: "logo", src: logo, alt: s.name }) : h("div", { class: "logo" }, "🍗");
   const ph = (s.phones || []).map(p => h("a", { class: "btn l s", href: "tel:" + String(p).replace(/\D/g, "") }, "📞 " + p));
-  $app.append(h("header", { class: "hero" }, lg, h("h1", {}, s.name), h("p", {}, s.slogan), h("a", { class: "btn", href: "#menu", onclick: e => { e.preventDefault(); document.getElementById("menu").scrollIntoView({ behavior: "smooth" }); } }, "Захиалах"), h("div", { class: "phones" }, ph)));
+  $app.append(h("header", { class: "hero" }, h("div", { class: "hrow" }, lg, h("div", {}, h("h1", {}, s.name), h("p", {}, s.slogan)), h("button", { class: "btn l s", style: "margin-left:auto;flex:none", onclick: () => openAuth() }, cust ? "👤 " + (profOf(cust).name.split(" ")[0] || "Профайл") : "👤 Нэвтрэх")), h("div", { class: "phones" }, h("a", { class: "btn s", href: "#menu", onclick: e => { e.preventDefault(); document.getElementById("menu").scrollIntoView({ behavior: "smooth" }); } }, "Захиалах"), ph)));
+  clearInterval(promoTimer);
+  const ps = promos.filter(p => p.show !== false);
+  if (ps.length) {
+    const track = h("div", { class: "promos" }, ps.map(p => h("div", { class: "slide" }, phBox({ id: "promo_" + p.id, name: p.title, category: "Промо" }), (p.title || p.text) ? h("div", { class: "ov" }, p.title ? h("b", {}, p.title) : null, p.text ? h("span", {}, p.text) : null) : null)));
+    $app.append(track);
+    if (ps.length > 1) promoTimer = setInterval(() => { if (!track.isConnected) return clearInterval(promoTimer); if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 8) track.scrollTo({ left: 0, behavior: "smooth" }); else track.scrollBy({ left: track.firstChild.offsetWidth + 10, behavior: "smooth" }); }, 4500);
+  }
   const wrap = h("main", { class: "wrap", id: "menu" });
-  const cats = CATS.filter(c => menu.some(m => m.category === c)); menu.forEach(m => { if (m.category && !cats.includes(m.category)) cats.push(m.category); });
+  const cats = CATS.filter(c => menuV.some(m => m.category === c)); menuV.forEach(m => { if (m.category && !cats.includes(m.category)) cats.push(m.category); });
   if (cats.length && !cats.includes(curCat)) curCat = cats[0];
-  wrap.append(h("div", { class: "tabs" }, cats.map(c => h("button", { class: "tab" + (c === curCat ? " on" : ""), onclick: () => { curCat = c; paintUser(); } }, c))));
+  const searchIn = h("input", { type: "search", placeholder: "🔍 Хоолоо хайх...", value: uq, style: "margin:10px 14px 0;width:calc(100% - 28px)" }); let redraw = () => {}; searchIn.addEventListener("input", () => { uq = searchIn.value; redraw(); }); wrap.append(searchIn);
+  wrap.append(h("div", { class: "tabs" }, cats.map(c => h("button", { class: "tab" + (c === curCat ? " on" : ""), onclick: () => { curCat = c; uq = ""; animGrid = true; paintUser(); } }, c))));
   if (!menuLoaded) wrap.append(h("div", { class: "empty" }, "Ачаалж байна..."));
   else if (menuErr) wrap.append(h("div", { class: "empty" }, "Меню уншиж чадсангүй. Түр хүлээгээд дахин оролдоно уу."));
-  else if (!menu.length) wrap.append(h("div", { class: "empty" }, "Меню удахгүй нэмэгдэнэ. Захиалгын утас: " + (s.phones || []).join(", ")));
+  else if (!menuV.length) wrap.append(h("div", { class: "empty" }, "Меню удахгүй нэмэгдэнэ. Захиалгын утас: " + (s.phones || []).join(", ")));
   else {
-    if (curCat === "Торт") wrap.append(h("div", { class: "warn", style: "margin:0 14px" }, "🎂 Бүх төрлийн торт, аяган тортыг захиалгаар хийнэ. Хамгийн багадаа 1-2 хоногийн өмнө захиална уу."));
-    wrap.append(h("div", { class: "grid" }, menu.filter(m => m.category === curCat).map(m => {
+    const gbox = h("div"), drawGrid = () => { clear(gbox); const qq = uq.trim().toLowerCase(), list = qq ? menuV.filter(m => (m.name + " " + (m.description || "")).toLowerCase().includes(qq)) : menuV.filter(m => m.category === curCat);
+    if (!qq && curCat === "Торт") gbox.append(h("div", { class: "warn", style: "margin:0 14px" }, "🎂 Бүх төрлийн торт, аяган тортыг захиалгаар хийнэ. Хамгийн багадаа 1-2 хоногийн өмнө захиална уу."));
+    gbox.append(list.length ? h("div", { class: "grid" + (animGrid ? " anim" : "") }, list.map((m, idx) => {
       const out = !!m.soldOut;
-      return h("div", { class: "card" + (out ? " out" : "") }, phBox(m), h("div", { class: "cb" }, h("h3", {}, m.name), m.description && h("small", {}, m.description), h("div", { class: "price" }, m.price > 0 ? fmt(m.price) : "Үнийг асуугаарай"), h("button", { class: "btn o s", disabled: out || !(m.price >= 0), onclick: () => { const i = cart.get(m.id) || { id: m.id, name: m.name, price: m.price, qty: 0 }; i.qty++; cart.set(m.id, i); paintUser(); } }, out ? "Дууссан" : "Сагсанд нэмэх")));
-    })));
+      const vs = Array.isArray(m.variants) ? m.variants.filter(v => v && v.label && v.price >= 0) : [], vi = vs.length ? Math.min(selVar.get(m.id) || 0, vs.length - 1) : -1, cur = vi >= 0 ? vs[vi] : null;
+      const key = cur ? m.id + "#" + vi : m.id, price = cur ? cur.price : m.price, nm = cur ? m.name + " — " + cur.label : m.name;
+      const it = cart.get(key), qty = it ? it.qty : 0, tot = [...cart.values()].filter(x => (x.mid || x.id) === m.id).reduce((a, x) => a + x.qty, 0);
+      const chg = d => { const i = cart.get(key) || { id: key, mid: m.id, name: nm, price, qty: 0 }; i.qty += d; if (i.qty <= 0) cart.delete(key); else cart.set(key, i); lastAdd = m.id; paintUser(); };
+      return h("div", { class: "card" + (out ? " out" : "") + (tot ? " sel" : ""), style: animGrid ? "animation-delay:" + Math.min(idx, 8) * 60 + "ms" : null }, tot ? h("div", { class: "qb" + (lastAdd === m.id ? " pop" : "") }, "× " + tot) : null, phBox(m), h("div", { class: "cb" }, h("h3", {}, m.name), m.description && h("small", {}, m.description),
+        vs.length > 0 && h("div", { class: "vars" }, vs.map((v, k) => h("button", { class: "vchip" + (k === vi ? " on" : ""), onclick: () => { selVar.set(m.id, k); paintUser(); } }, v.label))),
+        h("div", { class: "price" }, price > 0 ? fmt(price) : "Үнийг асуугаарай"),
+        qty ? h("div", { class: "step" }, h("button", { onclick: () => chg(-1) }, "−"), h("b", {}, qty + " авсан"), h("button", { onclick: () => chg(1) }, "+")) : h("button", { class: "btn o s", disabled: out || closed || !(price >= 0), onclick: () => chg(1) }, out ? "Дууссан" : closed ? "Хаалттай" : "Сагсанд нэмэх")));
+    })) : h("div", { class: "empty" }, "«" + uq + "» гэсэн хоол олдсонгүй"));
+    }; redraw = drawGrid; drawGrid(); animGrid = false; wrap.append(gbox);
   }
   $app.append(wrap);
   $app.append(h("footer", {}, h("div", { class: "wrap" }, h("div", { class: "fh" }, s.name), h("p", {}, "📍 " + s.address), h("p", {}, "🕒 " + s.hours), h("p", {}, "📞 ", (s.phones || []).map((p, i) => [i ? ", " : "", h("a", { href: "tel:" + String(p).replace(/\D/g, "") }, p)])), h("p", {}, h("a", { href: safeUrl(s.facebook), target: "_blank", rel: "noopener" }, "Facebook: YUMMY CAKES & CHICKEN"), " · ", h("a", { href: safeUrl(s.instagram), target: "_blank", rel: "noopener" }, "Instagram: yummmy_cakess")), /* ТҮРИЙН: админ линк. Сайт бэлэн болсны дараа доорх мөрийг устгана */ h("p", {}, h("a", { href: "#admin" }, "🔐 Админ")))));
   const t = cartTotals("pickup");
-  if (t.n) $app.append(h("button", { class: "cartbar", onclick: openCart }, h("span", {}, "🛒 Сагс (" + t.n + ")"), h("span", {}, fmt(t.sub))));
-  scrollTo(0, sc);
+  if (t.n) $app.append(h("button", { class: "cartbar" + (lastAdd ? " bump" : ""), onclick: openCart }, h("span", {}, "🛒 Сагс (" + t.n + ")"), h("span", {}, fmt(t.sub))));
+  lastAdd = null; scrollTo(0, sc);
 }
 
+const profOf = u => { const p = ((u && u.displayName) || "").split("|"); return { name: p[0] || "", phone: p[1] || "" }; };
+const authErr = e => { const c = (e && e.code) || ""; return c.includes("email-already") ? "Энэ имэйл аль хэдийн бүртгэлтэй байна" : c.includes("invalid-email") ? "Имэйл хаяг буруу байна" : c.includes("weak-password") ? "Нууц үг хамгийн багадаа 6 тэмдэгттэй байх ёстой" : (c.includes("invalid-credential") || c.includes("wrong-password") || c.includes("user-not-found")) ? "Имэйл эсвэл нууц үг буруу байна" : c.includes("too-many") ? "Түр хүлээгээд дахин оролдоно уу" : c.includes("network") ? "Сүлжээний алдаа гарлаа" : "Алдаа гарлаа, дахин оролдоно уу"; };
+function openAuth(mode0) {
+  let mode = mode0 || "login";
+  const sheet = h("div", { class: "sheet", onclick: e => { if (e.target === sheet) close(); } }), box = h("div"); sheet.append(box); document.body.append(sheet);
+  const close = () => sheet.remove(), err = h("div", { class: "err" }), info = h("div", { class: "okmsg" });
+  function draw() {
+    clear(box); err.textContent = ""; info.textContent = "";
+    if (cust) {
+      const pr = profOf(cust), nm = h("input", { maxlength: 60, value: pr.name }), ph = h("input", { inputmode: "numeric", maxlength: 8, value: pr.phone });
+      const hist = h("div"), hb = h("button", { class: "btn l", style: "width:100%;margin-top:8px", onclick: async () => {
+        clear(hist).append(h("div", { class: "empty" }, "Ачаалж байна..."));
+        try { const sn = await getDocs(query(collection(db, "orders"), where("uid", "==", cust.uid), limit(50)));
+          const rows = sn.docs.map(d => d.data()).sort((a, b) => ((b.createdAt && b.createdAt.toMillis ? b.createdAt.toMillis() : 0) - (a.createdAt && a.createdAt.toMillis ? a.createdAt.toMillis() : 0)));
+          clear(hist); if (!rows.length) hist.append(h("div", { class: "empty" }, "Захиалгын түүх хараахан байхгүй байна"));
+          rows.forEach(o => hist.append(h("div", { class: "panel" }, h("div", { class: "row" }, h("b", {}, "#" + o.orderNo), h("b", { style: "flex:none;color:var(--red)" }, fmt(o.total))), h("div", { style: "font-size:13px;color:#7a5a45" }, (o.createdAt && o.createdAt.toMillis ? new Date(o.createdAt.toMillis()).toLocaleString("mn-MN") : "") + " · " + ((STATUS.find(x => x[0] === o.status) || [0, o.status])[1])), h("ul", { style: "margin:4px 0 0 18px" }, (o.items || []).map(i => h("li", {}, i.name + " × " + i.qty))))));
+        } catch { clear(hist).append(h("div", { class: "err" }, "Түүхийг унших боломжгүй байна. Админ Firestore rules-ээ шинэчилсэн эсэхийг шалгана уу.")); } } }, "📜 Миний захиалгууд");
+      const sv = h("button", { class: "btn", style: "width:100%;margin-top:12px", onclick: async () => {
+        err.textContent = ""; info.textContent = ""; if (!nm.value.trim()) return err.textContent = "Нэрээ оруулна уу"; if (!/^\d{8}$/.test(ph.value.trim())) return err.textContent = "Утасны дугаар 8 оронтой байх ёстой";
+        sv.disabled = true; try { await updateProfile(cust, { displayName: nm.value.trim().replace(/\|/g, " ") + "|" + ph.value.trim() }); info.textContent = "Хадгаллаа"; paintUser(); } catch (e) { err.textContent = authErr(e); } sv.disabled = false; } }, "Хадгалах");
+      box.append(h("div", { class: "row" }, h("h2", {}, "👤 Миний профайл"), h("button", { class: "btn g s", style: "flex:none", onclick: close }, "Хаах")), h("p", { style: "margin-top:6px" }, "✉️ " + cust.email), h("label", {}, "Нэр", nm), h("label", {}, "Утасны дугаар", ph), err, info, sv, hb, hist, h("button", { class: "btn g", style: "width:100%;margin-top:8px", onclick: async () => { await signOut(auth); cust = null; close(); paintUser(); } }, "Гарах"));
+      return;
+    }
+    const em = h("input", { type: "email", autocomplete: "email" }), pw = h("input", { type: "password", autocomplete: mode === "login" ? "current-password" : "new-password" }), nm = h("input", { maxlength: 60, autocomplete: "name" }), ph = h("input", { inputmode: "numeric", maxlength: 8, autocomplete: "tel" });
+    const tab = (k, t) => h("button", { class: mode === k ? "on" : "", onclick: () => { mode = k; draw(); } }, t);
+    const go = h("button", { class: "btn", style: "width:100%;margin-top:12px" }, mode === "login" ? "Нэвтрэх" : "Бүртгүүлэх");
+    go.onclick = async () => {
+      err.textContent = ""; info.textContent = ""; const email = em.value.trim().toLowerCase(), name = nm.value.trim(), phone = ph.value.trim();
+      if (!email) return err.textContent = "Имэйлээ оруулна уу"; if (email === ADMIN_EMAIL) return err.textContent = "Энэ имэйлийг ашиглах боломжгүй"; if (!pw.value) return err.textContent = "Нууц үгээ оруулна уу";
+      if (mode === "reg") { if (!name) return err.textContent = "Нэрээ оруулна уу"; if (!/^\d{8}$/.test(phone)) return err.textContent = "Утасны дугаар 8 оронтой байх ёстой"; if (pw.value.length < 6) return err.textContent = "Нууц үг хамгийн багадаа 6 тэмдэгттэй байх ёстой"; }
+      go.disabled = true;
+      try { if (mode === "login") await signInWithEmailAndPassword(auth, email, pw.value); else { const c = await createUserWithEmailAndPassword(auth, email, pw.value); await updateProfile(c.user, { displayName: name.replace(/\|/g, " ") + "|" + phone }); }
+        cust = auth.currentUser; close(); paintUser(); } catch (e) { err.textContent = authErr(e); go.disabled = false; }
+    };
+    box.append(h("div", { class: "row" }, h("h2", {}, mode === "login" ? "Нэвтрэх" : "Бүртгүүлэх"), h("button", { class: "btn g s", style: "flex:none", onclick: close }, "Хаах")), h("div", { class: "seg", style: "margin-top:8px" }, tab("login", "Нэвтрэх"), tab("reg", "Бүртгүүлэх")),
+      mode === "reg" ? h("label", {}, "Нэр", nm) : null, mode === "reg" ? h("label", {}, "Утасны дугаар (8 орон)", ph) : null, h("label", {}, "Имэйл", em), h("label", {}, "Нууц үг" + (mode === "reg" ? " (6+ тэмдэгт)" : ""), pw), err, info, go,
+      mode === "login" ? h("button", { class: "btn g s", type: "button", style: "margin-top:8px", onclick: async () => { err.textContent = ""; info.textContent = ""; const email = em.value.trim().toLowerCase(); if (!email) return err.textContent = "Эхлээд имэйлээ оруулна уу"; try { await sendPasswordResetEmail(auth, email); info.textContent = "Нууц үг сэргээх линк имэйл рүү илгээгдлээ"; } catch (e) { err.textContent = authErr(e); } } }, "Нууц үгээ мартсан") : null);
+  }
+  draw();
+}
+const copy = async (t, b) => { try { await navigator.clipboard.writeText(t); } catch { const a = h("textarea"); a.value = t; document.body.append(a); a.select(); try { document.execCommand("copy"); } catch {} a.remove(); } const o = b.textContent; b.textContent = "✓"; setTimeout(() => { b.textContent = o; }, 1200); };
+function payBox(phone, total) {
+  const s = settings; if (!s.bankAccount) return null;
+  const line = (k, v, cp) => h("div", { class: "pl" }, h("span", {}, k), h("b", {}, v), cp ? h("button", { class: "btn g s", type: "button", onclick: e => copy(v, e.target) }, "Хуулах") : null);
+  return h("div", { class: "payb" }, h("b", {}, "💳 Төлбөр шилжүүлэх"), s.bankName ? line("Банк", s.bankName) : null, line("Дансны дугаар", s.bankAccount, true), s.bankOwner ? line("Хүлээн авагч", s.bankOwner) : null, total != null ? line("Дүн", fmt(total)) : null, line("Гүйлгээний утга", phone || "утасны дугаараа бичнэ үү", !!phone), h("small", { style: "color:#7a5a45" }, "Гүйлгээний утга дээр өөрийн утасны дугаарыг бичнэ үү."));
+}
 function openCart() {
-  let type = "delivery", result = null;
+  let type = "delivery", result = null, payType = settings.bankAccount ? null : "cash";
   const sheet = h("div", { class: "sheet", onclick: e => { if (e.target === sheet) close(); } }), box = h("div"); sheet.append(box); document.body.append(sheet);
   const close = () => { sheet.remove(); paintUser(); };
-  const hasCake = () => [...cart.values()].some(i => (menu.find(m => m.id === i.id) || {}).category === "Торт");
+  const hasCake = () => [...cart.values()].some(i => (menu.find(m => m.id === (i.mid || i.id)) || {}).category === "Торт");
   const f = { name: h("input", { maxlength: 60, autocomplete: "name" }), phone: h("input", { inputmode: "numeric", maxlength: 8, autocomplete: "tel" }), address: h("textarea", { maxlength: 200 }), date: h("input", { type: "date" }), time: h("input", { type: "time" }), note: h("textarea", { maxlength: 500 }) };
-  const err = h("div", { class: "err" }), send = h("button", { class: "btn", style: "width:100%;margin-top:12px" }, "Захиалга илгээх");
+  if (cust) { const pr = profOf(cust); f.name.value = pr.name; f.phone.value = pr.phone; }
+  const loginNote = cust ? null : h("div", { class: "warn" }, settings.requireLogin ? "Захиалахын тулд эхлээд нэвтэрнэ үү. " : "Бүртгүүлж нэвтэрвэл мэдээлэл автоматаар бөглөгдөнө. ", h("button", { class: "btn s", type: "button", style: "margin-top:6px", onclick: () => { sheet.remove(); paintUser(); openAuth("reg"); } }, "Нэвтрэх / Бүртгүүлэх"));
+  const payHolder = h("div"), err = h("div", { class: "err" }), send = h("button", { class: "btn", style: "width:100%;margin-top:12px" }, "Захиалга илгээх");
   const list = h("div"), sums = h("div"), addrL = h("label", {}, "Хүргэх хаяг", f.address), cakeW = h("div", { class: "warn" }, "🎂 Тортны захиалгыг хамгийн багадаа 1-2 хоногийн өмнө өгнө үү. Авах огноогоо заавал сонгоно уу.");
   const segD = h("button", { class: "on", onclick: () => setType("delivery") }, "🛵 Хүргэлт"), segP = h("button", { onclick: () => setType("pickup") }, "🏪 Очиж авах");
+  const segB = h("button", { type: "button", onclick: () => setPay("bank") }, "💳 Дансаар шилжүүлнэ"), segC = h("button", { type: "button", onclick: () => setPay("cash") }, "💵 Бэлнээр өгнө");
+  const payWrap = h("div", {}, h("label", {}, "Төлбөрөө хэрхэн төлөх вэ?"), h("div", { class: "seg", style: "margin-top:4px" }, segB, segC)); if (!settings.bankAccount) payWrap.classList.add("hide");
+  function setPay(k) { payType = k; segB.className = k === "bank" ? "on" : ""; segC.className = k === "cash" ? "on" : ""; updPay(); }
+  function updPay() { clear(payHolder); const p = payType === "bank" ? payBox(f.phone.value.trim(), cartTotals(type).total) : null; if (p) payHolder.append(p); }
+  f.phone.addEventListener("input", updPay);
   function setType(t) { type = t; segD.className = t === "delivery" ? "on" : ""; segP.className = t === "pickup" ? "on" : ""; addrL.classList.toggle("hide", t !== "delivery"); upd(); }
   function upd() {
     clear(list); clear(sums);
@@ -193,42 +297,44 @@ function openCart() {
     cart.forEach(i => list.append(h("div", { class: "ci" }, h("b", {}, i.name), h("div", { class: "q" }, h("button", { onclick: () => { i.qty--; if (i.qty <= 0) cart.delete(i.id); upd(); } }, "−"), h("span", {}, i.qty), h("button", { onclick: () => { i.qty++; upd(); } }, "+")), h("span", { style: "min-width:72px;text-align:right" }, fmt(i.price * i.qty)))));
     const t = cartTotals(type);
     sums.append(h("div", { class: "sum" }, h("span", {}, "Дүн"), h("span", {}, fmt(t.sub))), h("div", { class: "sum" }, h("span", {}, "Хүргэлт"), h("span", {}, fmt(t.fee))), h("div", { class: "sum t" }, h("span", {}, "Нийт"), h("span", {}, fmt(t.total))));
-    cakeW.classList.toggle("hide", !hasCake());
+    cakeW.classList.toggle("hide", !hasCake()); updPay();
     const min = new Date(); min.setDate(min.getDate() + (hasCake() ? 1 : 0)); f.date.min = isoDay(min);
   }
   function form() {
     clear(box);
     box.append(h("div", { class: "row" }, h("h2", {}, "🛒 Таны сагс"), h("button", { class: "btn g s", style: "flex:none", onclick: close }, "Хаах")), list, sums,
-      h("div", { class: "seg", style: "margin-top:10px" }, segD, segP),
+      loginNote, h("div", { class: "seg", style: "margin-top:10px" }, segD, segP),
       h("label", {}, "Нэр", f.name), h("label", {}, "Утасны дугаар (8 орон)", f.phone), addrL,
-      h("div", { class: "row" }, h("label", {}, "Авах огноо", f.date), h("label", {}, "Цаг", f.time)), cakeW, h("label", {}, "Тэмдэглэл", f.note), err, send);
+      h("div", { class: "row" }, h("label", {}, "Авах огноо", f.date), h("label", {}, "Цаг", f.time)), cakeW, h("label", {}, "Тэмдэглэл", f.note), payWrap, payHolder, err, send);
     upd();
   }
   send.onclick = async () => {
     err.textContent = "";
-    const name = f.name.value.trim(), phone = f.phone.value.trim(), address = f.address.value.trim(), date = f.date.value, time = f.time.value;
+    if (settings.open === false) return err.textContent = "Одоогоор хаалттай байна. Дараа дахин оролдоно уу"; if (settings.requireLogin && !cust) return err.textContent = "Захиалахын тулд нэвтэрнэ үү"; const name = f.name.value.trim(), phone = f.phone.value.trim(), address = f.address.value.trim(), date = f.date.value, time = f.time.value;
     if (!name) return err.textContent = "Нэрээ оруулна уу";
     if (!/^\d{8}$/.test(phone)) return err.textContent = "Утасны дугаар 8 оронтой байх ёстой";
     if (type === "delivery" && !address) return err.textContent = "Хүргэх хаягаа оруулна уу";
     if (hasCake() && !date) return err.textContent = "Тортны захиалгад авах огноогоо сонгоно уу";
     if (hasCake() && date < f.date.min) return err.textContent = "Торт хамгийн багадаа 1-2 хоногийн өмнө захиалагдана";
+    if (!payType) return err.textContent = "Төлбөрийн хэлбэрээ сонгоно уу (дансаар эсвэл бэлнээр)";
     const last = Number(localStorage.getItem("lo_" + phone) || 0);
     if (Date.now() - last < 60000) return err.textContent = "Түр хүлээгээд дахин оролдоно уу";
     const t = cartTotals(type);
     if (t.total > 20000000 || cart.size > 50) return err.textContent = "Захиалга хэт том байна";
     send.disabled = true; send.textContent = "Илгээж байна...";
     try {
-      const no = await runTransaction(db, async tx => {
+      const mk = withUid => runTransaction(db, async tx => {
         const cRef = doc(db, "counters", "orders"), cs = await tx.get(cRef);
         const n = cs.exists() ? (cs.data().value || 0) + 1 : 1;
         tx.set(cRef, { value: n });
         tx.set(doc(db, "rateLimits", phone), { last: serverTimestamp() });
-        tx.set(doc(collection(db, "orders")), { orderNo: n, name, phone, type, address: type === "delivery" ? address : "", date: date || "", time: time || "", note: f.note.value.trim(), items: [...cart.values()].map(i => ({ id: i.id, name: i.name, price: i.price, qty: i.qty })), subtotal: t.sub, deliveryFee: t.fee, total: t.total, status: "new", createdAt: serverTimestamp() });
+        tx.set(doc(collection(db, "orders")), { orderNo: n, name, phone, type, address: type === "delivery" ? address : "", date: date || "", time: time || "", note: ((payType === "bank" ? "💳 Дансаар шилжүүлнэ" : "💵 Бэлнээр өгнө") + (f.note.value.trim() ? " | " + f.note.value.trim() : "")).slice(0, 500), items: [...cart.values()].map(i => ({ id: i.mid || i.id, name: i.name, price: i.price, qty: i.qty })), subtotal: t.sub, deliveryFee: t.fee, total: t.total, status: "new", createdAt: serverTimestamp(), ...(withUid && cust ? { uid: cust.uid } : {}) });
         return n;
       });
+      let no; try { no = await mk(true); } catch (e) { if (cust && e && e.code === "permission-denied") no = await mk(false); else throw e; }
       localStorage.setItem("lo_" + phone, String(Date.now()));
       cart.clear(); result = no;
-      clear(box); box.append(h("div", { class: "empty" }, h("div", { class: "big" }, "#" + no), h("h2", {}, "Баярлалаа!"), h("p", {}, "Таны захиалгыг хүлээн авлаа, удахгүй залгана."), h("button", { class: "btn", style: "margin-top:14px", onclick: close }, "Ойлголоо")));
+      clear(box); box.append(h("div", { class: "empty" }, h("div", { class: "big" }, "#" + no), h("h2", {}, "Баярлалаа!"), h("p", {}, "Таны захиалгыг хүлээн авлаа, удахгүй залгана."), payType === "bank" ? payBox(phone, t.total) : null, h("button", { class: "btn", style: "margin-top:14px", onclick: close }, "Ойлголоо")));
     } catch (e) { console.error(e); err.textContent = "Түр хүлээгээд дахин оролдоно уу"; send.disabled = false; send.textContent = "Захиалга илгээх"; }
   };
   form();
@@ -239,6 +345,7 @@ let audioCtx = null;
 function beep() { try { audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)(); [0, 0.25].forEach(d => { const o = audioCtx.createOscillator(), g = audioCtx.createGain(); o.connect(g); g.connect(audioCtx.destination); o.frequency.value = 880; g.gain.setValueAtTime(0.3, audioCtx.currentTime + d); g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + d + 0.2); o.start(audioCtx.currentTime + d); o.stop(audioCtx.currentTime + d + 0.22); }); } catch {} }
 let authUnsub = null;
 function renderAdmin() {
+  clearInterval(promoTimer);
   robots(true); document.title = "Админ"; clear($app);
   if (authUnsub) authUnsub();
   const root = h("div"); $app.append(root);
@@ -266,31 +373,50 @@ function loginForm(root) {
 
 function adminPanel(root, user) {
   const unsubs = []; let tab = "orders";
-  adminCleanup = () => { unsubs.forEach(u => u()); adminMenuHook = null; };
-  const warn = h("div", { class: "alert hide" }, "Анхны код солигдоогүй байна, одоо солиорой"), content = h("div", { class: "wrap" }), badge = h("span", { class: "dot hide" });
+  adminCleanup = () => { unsubs.forEach(u => u()); adminMenuHook = null; adminPromoHook = null; };
+  const content = h("div", { class: "wrap" }), badge = h("span", { class: "dot hide" });
   const tabsEl = h("div", { class: "tabs", style: "position:static" });
-  const names = [["orders", "Захиалгууд"], ["menu", "Меню"], ["settings", "Тохиргоо"]];
+  const names = [["orders", "Захиалгууд"], ["menu", "Меню"], ["promo", "Сурталчилгаа"], ["settings", "Тохиргоо"]];
   const btns = {}; names.forEach(([k, n]) => { btns[k] = h("button", { class: "tab", onclick: () => { tab = k; show(); } }, n); tabsEl.append(btns[k]); }); btns.orders.append(badge);
-  root.append(h("div", { class: "bar" }, h("b", {}, "Админ"), h("a", { href: "#", style: "color:#ffd29a" }, "← Сайт"), h("button", { class: "btn g s", onclick: () => signOut(auth) }, "Гарах")), warn, tabsEl, content);
-  unsubs.push(onSnapshot(doc(db, "settings", "security"), s => warn.classList.toggle("hide", !!(s.exists() && s.data().codeChanged === true)), () => warn.classList.remove("hide")));
+  let isOpen = true;
+  const storeBtn = h("button", { class: "btn", style: "display:block;width:calc(100% - 28px);margin:10px 14px 0", onclick: async () => { storeBtn.disabled = true; try { await setDoc(doc(db, "settings", "site"), { open: !isOpen }, { merge: true }); } catch { alert("Алдаа гарлаа"); } storeBtn.disabled = false; } });
+  unsubs.push(onSnapshot(doc(db, "settings", "site"), sn => { isOpen = !(sn.exists() && sn.data().open === false); storeBtn.textContent = isOpen ? "🟢 Дэлгүүр нээлттэй · хаах бол дарна уу" : "🔴 Дэлгүүр хаалттай · нээх бол дарна уу"; storeBtn.style.background = isOpen ? "var(--ok)" : "#b00020"; }, () => {}));
+  root.append(h("div", { class: "bar" }, h("b", {}, "Админ"), h("a", { href: "#", style: "color:#ffd29a" }, "← Сайт"), h("button", { class: "btn g s", onclick: () => signOut(auth) }, "Гарах")), storeBtn, tabsEl, content);
 
   /* orders */
   let orders = [], first = true, fStatus = "all", fToday = false, q = "";
-  const stats = h("div", { class: "stats" }), list = h("div"), search = h("input", { placeholder: "Утсаар хайх", inputmode: "numeric", oninput: e => { q = e.target.value.trim(); drawOrders(); } }), chips = h("div", { class: "chips" });
-  const ordersView = h("div", {}, h("div", { class: "panel" }, stats), search, chips, list);
+  const stats = h("div", { class: "stats" }), list = h("div"), search = h("input", { placeholder: "🔍 Утас, нэр эсвэл хоолоор хайх", oninput: e => { q = e.target.value.trim().toLowerCase(); drawOrders(); } }), chips = h("div", { class: "chips swipe" });
+  const ordersView = h("div", {}, chips, h("div", { class: "panel" }, stats), search, list);
   const mkChip = (t, on, fn) => h("button", { class: "chip" + (on ? " on" : ""), onclick: fn }, t);
+  const openSet = new Set();
+  const FLOW = ["new", "confirmed", "done", "cancelled"], SCOL = { new: "#e00", confirmed: "#E8742A", done: "#2e8b57", cancelled: "#999" };
+  const stName = k => (STATUS.find(x => x[0] === k) || [k, k])[1];
+  const setSt = (o, k) => updateDoc(doc(db, "orders", o.id), { status: k }).catch(() => alert("Статус солиход алдаа гарлаа"));
   function drawOrders() {
     const now = new Date(), t0 = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(), sum = ms => orders.filter(o => o.status !== "cancelled" && o.ts >= ms).reduce((a, o) => a + (o.total || 0), 0);
     clear(stats).append(h("div", {}, "Өнөөдөр", h("b", {}, fmt(sum(t0)))), h("div", {}, "7 хоног", h("b", {}, fmt(sum(t0 - 6 * 864e5)))), h("div", {}, "Сар", h("b", {}, fmt(sum(new Date(now.getFullYear(), now.getMonth(), 1).getTime())))));
-    clear(chips).append(mkChip("Өнөөдөр", fToday, () => { fToday = !fToday; drawOrders(); }), mkChip("Бүгд", fStatus === "all", () => { fStatus = "all"; drawOrders(); }), STATUS.map(([k, n]) => mkChip(n, fStatus === k, () => { fStatus = k; drawOrders(); })));
-    const cnt = orders.filter(o => o.status === "new").length; badge.textContent = cnt; badge.classList.toggle("hide", !cnt);
-    const rows = orders.filter(o => (fStatus === "all" || o.status === fStatus) && (!fToday || o.ts >= t0) && (!q || String(o.phone).includes(q)));
+    const cnt = k => orders.filter(o => o.status === k).length;
+    clear(chips).append(mkChip("Бүгд", fStatus === "all", () => { fStatus = "all"; drawOrders(); }), ...FLOW.map(k => mkChip(stName(k) + " (" + cnt(k) + ")", fStatus === k, () => { fStatus = k; drawOrders(); })), mkChip("Өнөөдөр", fToday, () => { fToday = !fToday; drawOrders(); }));
+    badge.textContent = cnt("new"); badge.classList.toggle("hide", !cnt("new"));
+    const rows = orders.filter(o => (fStatus === "all" || o.status === fStatus) && (!fToday || o.ts >= t0) && (!q || String(o.phone).includes(q) || String(o.name || "").toLowerCase().includes(q) || String(o.orderNo).includes(q.replace("#", "")) || (o.items || []).some(i => String(i.name || "").toLowerCase().includes(q))));
     clear(list); if (!rows.length) list.append(h("div", { class: "empty" }, "Захиалга олдсонгүй"));
-    rows.forEach(o => list.append(h("div", { class: "panel" }, h("div", { class: "row" }, h("h3", {}, "#" + o.orderNo + " · " + o.name), h("b", { style: "flex:none;color:var(--red)" }, fmt(o.total))),
-      h("div", {}, o.type === "delivery" ? "🛵 Хүргэлт: " + o.address : "🏪 Очиж авна", o.date || o.time ? " · " + (o.date || "") + " " + (o.time || "") : ""),
-      o.note && h("div", {}, "📝 " + o.note), h("ul", { style: "margin:6px 0 6px 18px" }, (o.items || []).map(i => h("li", {}, i.name + " × " + i.qty))),
-      h("div", { class: "row", style: "margin:6px 0" }, h("a", { class: "btn o s", style: "flex:none", href: "tel:" + o.phone }, "📞 Залгах " + o.phone), h("span", {}, o.ts ? new Date(o.ts).toLocaleString("mn-MN") : "")),
-      h("div", { class: "chips" }, STATUS.map(([k, n]) => mkChip(n, o.status === k, async () => { try { await updateDoc(doc(db, "orders", o.id), { status: k }); } catch { alert("Статус солиход алдаа гарлаа"); } }))))));
+    rows.forEach(o => {
+      const acts = [];
+      if (o.status === "new") acts.push(h("button", { class: "btn s", onclick: () => setSt(o, "confirmed") }, "✓ Батлах"), h("button", { class: "btn g s", onclick: () => setSt(o, "cancelled") }, "Цуцлах"));
+      else if (o.status === "confirmed") acts.push(h("button", { class: "btn s", style: "background:var(--ok)", onclick: () => setSt(o, "done") }, "✓ Дуусгах"), h("button", { class: "btn g s", onclick: () => setSt(o, "cancelled") }, "Цуцлах"));
+      else acts.push(h("button", { class: "btn g s", onclick: () => setSt(o, "new") }, "↺ Шинэ болгох"));
+      const isOpen = openSet.has(o.id), toggle = () => { if (openSet.has(o.id)) openSet.delete(o.id); else openSet.add(o.id); drawOrders(); };
+      const n = (o.items || []).reduce((a, i) => a + (i.qty || 0), 0), col = SCOL[o.status] || "#999";
+      list.append(h("div", { class: "ocard", style: "border-left:6px solid " + col },
+        h("div", { class: "row", style: "cursor:pointer", onclick: toggle }, h("b", { class: "fh", style: "font-size:19px" }, "#" + o.orderNo + " " + o.name), h("b", { style: "flex:none;color:var(--red)" }, fmt(o.total))),
+        h("div", { style: "font-size:13px;color:#7a5a45;cursor:pointer", onclick: toggle }, o.ts ? new Date(o.ts).toLocaleString("mn-MN") + " " : "", h("span", { class: "badge", style: "background:" + col }, stName(o.status)), " · " + n + " бараа" + (o.note && o.note.startsWith("💵") ? " · 💵 Бэлнээр" : o.note && o.note.startsWith("💳") ? " · 💳 Данс" : "") + " " + (isOpen ? "▲" : "▼")),
+        isOpen && h("div", { style: "margin-top:6px;border-top:1px dashed var(--line);padding-top:8px" },
+          h("div", {}, o.type === "delivery" ? "🛵 " + o.address : "🏪 Очиж авна", (o.date || o.time) ? " · " + (o.date || "") + " " + (o.time || "") : ""),
+          o.note && h("div", {}, "📝 " + o.note),
+          h("ul", {}, (o.items || []).map(i => h("li", {}, i.name + " × " + i.qty + " — " + fmt(i.price * i.qty)))),
+          o.deliveryFee > 0 && h("div", { style: "font-size:13px" }, "Хүргэлт: " + fmt(o.deliveryFee)),
+          h("div", { class: "row", style: "flex-wrap:wrap;margin-top:8px" }, h("a", { class: "btn o s", style: "flex:none", href: "tel:" + o.phone }, "📞 " + o.phone), acts))));
+    });
   }
   unsubs.push(onSnapshot(query(collection(db, "orders"), orderBy("createdAt", "desc"), limit(300)), s => {
     if (!first && s.docChanges().some(c => c.type === "added" && !c.doc.metadata.hasPendingWrites)) beep(); first = false;
@@ -298,31 +424,50 @@ function adminPanel(root, user) {
   }, () => clear(list).append(h("div", { class: "err" }, "Захиалга уншиж чадсангүй"))));
 
   /* menu */
-  const mlist = h("div"), mform = h("div"), seedBox = h("div");
-  const menuView = h("div", {}, h("button", { class: "btn", style: "margin:10px 0", onclick: () => edit(null) }, "+ Бүтээгдэхүүн нэмэх"), seedBox, mform, mlist);
+  let mCat = "all", mSort = "order", mQ = "";
+  const msearch = h("input", { type: "search", placeholder: "🔍 Хоолны нэрээр хайх", style: "margin-bottom:8px", oninput: e => { mQ = e.target.value.trim().toLowerCase(); drawMenu(); } });
+  const mlist = h("div"), mform = h("div"), seedBox = h("div"), mfilter = h("div", { class: "chips swipe" });
+  const msort = h("select", { style: "margin-bottom:4px", onchange: e => { mSort = e.target.value; drawMenu(); } }, [["order", "Дарааллаар (ангиллаар)"], ["hi", "Үнэ: өндрөөс нам"], ["lo", "Үнэ: намаас өндөр"], ["name", "Нэрээр (А-Я)"]].map(([v, t]) => h("option", { value: v }, t)));
+  const menuView = h("div", {}, h("button", { class: "btn", style: "margin:10px 0", onclick: () => edit(null) }, "+ Бүтээгдэхүүн нэмэх"), seedBox, mform, msearch, mfilter, msort, mlist);
   function drawMenu() {
     clear(seedBox); if (menuLoaded && !menu.length && !menuErr) seedBox.append(h("button", { class: "btn o", onclick: async e => { e.target.disabled = true; try { const b = writeBatch(db); SEED.forEach((s, i) => b.set(doc(collection(db, "menu")), { name: s[0], description: s[1], price: s[2], category: s[3], soldOut: false, order: i + 1 })); b.set(doc(db, "menu", "cake_info"), { name: "Торт / Аяган торт (захиалгаар)", description: "Бүх төрлийн торт, аяган торт захиалгаар хийнэ. Үнийг админ нэмнэ.", price: 0, category: "Торт", soldOut: true, order: 20 }); await b.commit(); } catch { alert("Алдаа гарлаа"); e.target.disabled = false; } } }, "Анхны өгөгдөл оруулах"));
     clear(mlist); if (!menu.length) mlist.append(h("div", { class: "empty" }, "Меню хоосон байна"));
-    menu.forEach((m, i) => mlist.append(h("div", { class: "mi" }, phBox(m), h("div", {}, h("b", {}, m.name), h("div", {}, m.category + " · " + fmt(m.price) + (m.soldOut ? " · дууссан" : ""))),
+    const rowOf = (m, canMove) => { const cl = menu.filter(x => x.category === m.category), p = cl.indexOf(m), up = cl[p - 1], dn = cl[p + 1]; return h("div", { class: "mi" }, phBox(m), h("div", {}, h("b", {}, m.name), h("div", {}, m.category + " · " + priceTxt(m) + (m.soldOut ? " · дууссан" : ""))),
       h("div", { style: "display:flex;flex-direction:column;gap:4px" },
-        h("div", { class: "row" }, h("button", { class: "btn g s", disabled: i === 0, onclick: () => swap(i, i - 1) }, "▲"), h("button", { class: "btn g s", disabled: i === menu.length - 1, onclick: () => swap(i, i + 1) }, "▼")),
-        h("button", { class: "btn l s", onclick: () => edit(m) }, "Засах"), h("button", { class: "btn g s", onclick: async () => { try { await updateDoc(doc(db, "menu", m.id), { soldOut: !m.soldOut }); } catch { alert("Алдаа гарлаа"); } } }, m.soldOut ? "Нээх" : "Дууссан")))));
+        h("div", { class: "row" }, ...(canMove ? [h("button", { class: "btn g s", disabled: !up, onclick: () => swap(menu.indexOf(m), menu.indexOf(up)) }, "▲"), h("button", { class: "btn g s", disabled: !dn, onclick: () => swap(menu.indexOf(m), menu.indexOf(dn)) }, "▼")] : [])),
+        h("button", { class: "btn l s", onclick: () => edit(m) }, "Засах"), h("button", { class: "btn g s", onclick: async () => { try { await updateDoc(doc(db, "menu", m.id), { soldOut: !m.soldOut }); } catch { alert("Алдаа гарлаа"); } } }, m.soldOut ? "Нээх" : "Дууссан"))); };
+    const cats = CATS.filter(c => menu.some(m => m.category === c)); menu.forEach(m => { if (m.category && !cats.includes(m.category)) cats.push(m.category); });
+    if (mCat !== "all" && !cats.includes(mCat)) mCat = "all";
+    clear(mfilter).append(mkChip("Бүгд (" + menu.length + ")", mCat === "all", () => { mCat = "all"; drawMenu(); }), ...cats.map(c => mkChip(c + " (" + menu.filter(m => m.category === c).length + ")", mCat === c, () => { mCat = c; drawMenu(); })));
+    let items = menu.filter(m => (mCat === "all" || m.category === mCat) && (!mQ || String(m.name).toLowerCase().includes(mQ)));
+    const cmp = { hi: (a, b) => b.price - a.price, lo: (a, b) => a.price - b.price, name: (a, b) => String(a.name).localeCompare(String(b.name), "mn") }[mSort];
+    if (cmp) items = items.slice().sort(cmp);
+    const canMove = mSort === "order";
+    if (!items.length && menu.length) mlist.append(h("div", { class: "empty" }, mQ ? "Хоол олдсонгүй" : "Энэ ангилалд хоол алга"));
+    if (canMove && mCat === "all") cats.forEach(c => { const g = items.filter(m => m.category === c); if (g.length) { mlist.append(h("div", { class: "gh" }, (EMO[c] || "🍽️") + " " + c + " (" + g.length + ")")); g.forEach(m => mlist.append(rowOf(m, true))); } });
+    else items.forEach(m => mlist.append(rowOf(m, canMove)));
   }
   async function swap(a, b) { try { const x = menu[a], y = menu[b], bt = writeBatch(db); bt.update(doc(db, "menu", x.id), { order: b + 1 }); bt.update(doc(db, "menu", y.id), { order: a + 1 }); menu.forEach((m, i) => { if (i !== a && i !== b && m.order !== i + 1) bt.update(doc(db, "menu", m.id), { order: i + 1 }); }); await bt.commit(); } catch { alert("Дарааллыг солиход алдаа гарлаа"); } }
   function edit(m) {
+    let vars = m && Array.isArray(m.variants) ? m.variants.map(v => ({ label: v.label, price: v.price })) : [];
+    const vbox = h("div"), drawVars = () => { clear(vbox); vars.forEach((v, k) => vbox.append(h("div", { class: "row", style: "margin-top:6px" }, h("input", { placeholder: "жишээ: 2~3 хүн", value: v.label, maxlength: 40, oninput: e => { v.label = e.target.value; } }), h("input", { type: "number", min: 0, inputmode: "numeric", placeholder: "Үнэ ₮", value: v.price, oninput: e => { v.price = e.target.value; } }), h("button", { class: "btn g s", style: "flex:none", onclick: () => { vars.splice(k, 1); drawVars(); } }, "✕")))); };
+    drawVars();
     const nm = h("input", { maxlength: 100, value: m ? m.name : "" }), pr = h("input", { type: "number", min: 0, inputmode: "numeric", value: m ? m.price : "" }), ds = h("textarea", { maxlength: 500 }, m ? m.description || "" : ""), ct = h("select", {}, CATS.map(c => h("option", { value: c, selected: m && m.category === c ? "" : null }, c))), so = h("input", { type: "checkbox", style: "width:auto" }); so.checked = !!(m && m.soldOut);
     const file = h("input", { type: "file", accept: "image/*" }), prev = h("img", { class: "prev hide", alt: "" }), err = h("div", { class: "err" }); let data = null;
     if (m) loadImg(m.id).then(d => { if (d && !data) { prev.src = d; prev.classList.remove("hide"); } });
     file.onchange = async () => { err.textContent = ""; if (!file.files[0]) return; try { data = await compress(file.files[0], 800, 150); prev.src = data; prev.classList.remove("hide"); } catch (e) { data = null; file.value = ""; err.textContent = e.message; } };
     const save = h("button", { class: "btn", onclick: async () => {
-      err.textContent = ""; const name = nm.value.trim(), price = Number(pr.value);
-      if (!name || name.length > 100) return err.textContent = "Нэр 1-100 тэмдэгт байх ёстой"; if (pr.value === "" || !(price >= 0)) return err.textContent = "Үнийг зөв оруулна уу";
+      err.textContent = ""; const name = nm.value.trim();
+      const raw = vars.filter(v => String(v.label).trim() || String(v.price).trim() !== "");
+      if (raw.some(v => !String(v.label).trim() || String(v.price).trim() === "" || !(Number(v.price) >= 0))) return err.textContent = "Сонголт бүрийн нэр, үнийг бүрэн зөв оруулна уу";
+      const vv = raw.map(v => ({ label: String(v.label).trim().slice(0, 40), price: Number(v.price) })), price = vv.length ? Math.min(...vv.map(v => v.price)) : Number(pr.value);
+      if (!name || name.length > 100) return err.textContent = "Нэр 1-100 тэмдэгт байх ёстой"; if (!vv.length && (pr.value === "" || !(price >= 0))) return err.textContent = "Үнийг зөв оруулна уу";
       save.disabled = true;
-      try { const ref = m ? doc(db, "menu", m.id) : doc(collection(db, "menu")); await setDoc(ref, { name, price, description: ds.value.trim(), category: ct.value, soldOut: so.checked, order: m ? m.order || 0 : menu.length + 1 });
+      try { const ref = m ? doc(db, "menu", m.id) : doc(collection(db, "menu")); await setDoc(ref, { name, price, variants: vv, description: ds.value.trim(), category: ct.value, soldOut: so.checked, order: m ? m.order || 0 : menu.length + 1 });
         if (data) { await setDoc(doc(db, "menuImages", ref.id), { data }); imgCache.set(ref.id, data); }
         clear(mform); drawMenu(); } catch (e) { console.error(e); err.textContent = "Хадгалахад алдаа гарлаа"; save.disabled = false; } } }, "Хадгалах");
     const del = m && h("button", { class: "btn g", onclick: async () => { if (!confirm("«" + m.name + "»-г устгах уу?")) return; try { await deleteDoc(doc(db, "menu", m.id)); try { await deleteDoc(doc(db, "menuImages", m.id)); } catch {} imgCache.delete(m.id); clear(mform); } catch { err.textContent = "Устгахад алдаа гарлаа"; } } }, "Устгах");
-    clear(mform).append(h("div", { class: "panel" }, h("h3", {}, m ? "Бүтээгдэхүүн засах" : "Шинэ бүтээгдэхүүн"), h("label", {}, "Нэр", nm), h("label", {}, "Үнэ (₮)", pr), h("label", {}, "Тайлбар", ds), h("label", {}, "Категори", ct), h("label", { style: "display:flex;gap:8px;align-items:center" }, so, "Дууссан"), h("label", {}, "Зураг", file), prev, err, h("div", { class: "row", style: "margin-top:10px" }, save, del, h("button", { class: "btn g", onclick: () => clear(mform) }, "Болих"))));
+    clear(mform).append(h("div", { class: "panel" }, h("h3", {}, m ? "Бүтээгдэхүүн засах" : "Шинэ бүтээгдэхүүн"), h("label", {}, "Нэр", nm), h("label", {}, "Үнэ (₮) — сонголт байвал шаардлагагүй", pr), h("div", { style: "margin-top:10px" }, h("b", {}, "Сонголтууд (жишээ: 2~3 хүн, 3~4 хүн)"), vbox, h("button", { class: "btn l s", style: "margin-top:8px", onclick: () => { vars.push({ label: "", price: "" }); drawVars(); } }, "+ Сонголт нэмэх")), h("label", {}, "Тайлбар", ds), h("label", {}, "Категори", ct), h("label", { style: "display:flex;gap:8px;align-items:center" }, so, "Дууссан"), h("label", {}, "Зураг", file), prev, err, h("div", { class: "row", style: "margin-top:10px" }, save, del, h("button", { class: "btn g", onclick: () => clear(mform) }, "Болих"))));
     mform.scrollIntoView({ behavior: "smooth" });
   }
   adminMenuHook = drawMenu; drawMenu();
@@ -330,8 +475,8 @@ function adminPanel(root, user) {
   /* settings */
   const setView = h("div");
   function drawSettings() {
-    const s = settings, F = { name: h("input", { maxlength: 100, value: s.name }), slogan: h("input", { maxlength: 150, value: s.slogan }), fee: h("input", { type: "number", min: 0, value: s.deliveryFee }), phones: h("input", { value: (s.phones || []).join(", ") }), address: h("input", { maxlength: 200, value: s.address }), fb: h("input", { value: s.facebook }), ig: h("input", { value: s.instagram }), hours: h("input", { maxlength: 150, value: s.hours }), banner: h("input", { maxlength: 200, value: s.banner, placeholder: "Хоосон бол харагдахгүй" }) };
-    const msg = h("div", { class: "err" }), sv = h("button", { class: "btn", onclick: async () => { msg.className = "err"; msg.textContent = ""; sv.disabled = true; try { await setDoc(doc(db, "settings", "site"), { name: F.name.value.trim() || DEF.name, slogan: F.slogan.value.trim(), deliveryFee: Math.max(0, Number(F.fee.value) || 0), phones: F.phones.value.split(/[,\s]+/).filter(x => /^\d{8}$/.test(x)), address: F.address.value.trim(), facebook: F.fb.value.trim(), instagram: F.ig.value.trim(), hours: F.hours.value.trim(), banner: F.banner.value.trim() }); msg.className = "okmsg"; msg.textContent = "Хадгаллаа"; } catch { msg.textContent = "Хадгалахад алдаа гарлаа"; } sv.disabled = false; } }, "Хадгалах");
+    const s = settings, F = { name: h("input", { maxlength: 100, value: s.name }), slogan: h("input", { maxlength: 150, value: s.slogan }), fee: h("input", { type: "number", min: 0, value: s.deliveryFee }), phones: h("input", { value: (s.phones || []).join(", ") }), address: h("input", { maxlength: 200, value: s.address }), fb: h("input", { value: s.facebook }), ig: h("input", { value: s.instagram }), hours: h("input", { maxlength: 150, value: s.hours }), banner: h("input", { maxlength: 200, value: s.banner, placeholder: "Хоосон бол харагдахгүй" }), bankName: h("input", { maxlength: 60, value: s.bankName || "", placeholder: "Жишээ: Хаан банк" }), bankAccount: h("input", { maxlength: 40, value: s.bankAccount || "", placeholder: "Дансны дугаар" }), bankOwner: h("input", { maxlength: 80, value: s.bankOwner || "", placeholder: "Данс эзэмшигчийн нэр" }), reqLogin: h("input", { type: "checkbox", style: "width:auto", checked: s.requireLogin ? "" : null }) };
+    const msg = h("div", { class: "err" }), sv = h("button", { class: "btn", onclick: async () => { msg.className = "err"; msg.textContent = ""; sv.disabled = true; try { await setDoc(doc(db, "settings", "site"), { name: F.name.value.trim() || DEF.name, slogan: F.slogan.value.trim(), deliveryFee: Math.max(0, Number(F.fee.value) || 0), phones: F.phones.value.split(/[,\s]+/).filter(x => /^\d{8}$/.test(x)), address: F.address.value.trim(), facebook: F.fb.value.trim(), instagram: F.ig.value.trim(), hours: F.hours.value.trim(), banner: F.banner.value.trim(), bankName: F.bankName.value.trim(), bankAccount: F.bankAccount.value.trim(), bankOwner: F.bankOwner.value.trim(), requireLogin: F.reqLogin.checked }, { merge: true }); msg.className = "okmsg"; msg.textContent = "Хадгаллаа"; } catch { msg.textContent = "Хадгалахад алдаа гарлаа"; } sv.disabled = false; } }, "Хадгалах");
     const lf = h("input", { type: "file", accept: "image/*" }), lm = h("div", { class: "err" }); lf.onchange = async () => { lm.className = "err"; lm.textContent = ""; try { const d = await compress(lf.files[0], 256, 100); await setDoc(doc(db, "settings", "logo"), { data: d }); lm.className = "okmsg"; lm.textContent = "Лого шинэчлэгдлээ"; } catch (e) { lm.textContent = e.message || "Алдаа гарлаа"; } };
     const c1 = h("input", { type: "password", autocomplete: "current-password" }), c2 = h("input", { type: "password", autocomplete: "new-password" }), c3 = h("input", { type: "password", autocomplete: "new-password" }), pm = h("div", { class: "err" });
     const pb = h("button", { class: "btn", onclick: async () => {
@@ -342,12 +487,38 @@ function adminPanel(root, user) {
       try { await reauthenticateWithCredential(user, EmailAuthProvider.credential(ADMIN_EMAIL, cur)); await updatePassword(user, nw); await setDoc(doc(db, "settings", "security"), { codeChanged: true }); c1.value = c2.value = c3.value = ""; pm.className = "okmsg"; pm.textContent = "Код амжилттай солигдлоо"; }
       catch (e) { const c = e.code || ""; pm.textContent = c.includes("wrong-password") || c.includes("invalid-credential") ? "Одоогийн код буруу байна" : c.includes("weak-password") ? "Шинэ код хэт сул байна" : c.includes("requires-recent-login") ? "Дахин нэвтэрч ороод оролдоно уу" : c.includes("too-many") ? "Түр хүлээгээд дахин оролдоно уу" : c.includes("network") ? "Сүлжээний алдаа гарлаа" : c === "permission-denied" || c.includes("permission") ? "Код солигдсон боловч тэмдэглэл хадгалахад эрхийн алдаа гарлаа" : "Код солиход алдаа гарлаа"; }
       pb.disabled = false; } }, "Код солих");
-    clear(setView).append(h("div", { class: "panel" }, h("h3", {}, "Сайтын тохиргоо"), h("label", {}, "Сайтын нэр", F.name), h("label", {}, "Уриа", F.slogan), h("label", {}, "Хүргэлтийн төлбөр (₮)", F.fee), h("label", {}, "Утасны дугаарууд (таслалаар)", F.phones), h("label", {}, "Хаяг", F.address), h("label", {}, "Facebook линк (https://...)", F.fb), h("label", {}, "Instagram линк (https://...)", F.ig), h("label", {}, "Ажлын цаг", F.hours), h("label", {}, "Дээд талын мэдэгдэл", F.banner), msg, h("div", { style: "margin-top:10px" }, sv)),
+    clear(setView).append(h("div", { class: "panel" }, h("h3", {}, "Сайтын тохиргоо"), h("label", {}, "Сайтын нэр", F.name), h("label", {}, "Уриа", F.slogan), h("label", {}, "Хүргэлтийн төлбөр (₮)", F.fee), h("label", {}, "Утасны дугаарууд (таслалаар)", F.phones), h("label", {}, "Хаяг", F.address), h("label", {}, "Facebook линк (https://...)", F.fb), h("label", {}, "Instagram линк (https://...)", F.ig), h("label", {}, "Ажлын цаг", F.hours), h("h3", { style: "margin-top:14px" }, "💳 Төлбөрийн мэдээлэл"), h("label", {}, "Банкны нэр", F.bankName), h("label", {}, "Дансны дугаар", F.bankAccount), h("label", {}, "Данс эзэмшигч", F.bankOwner), h("label", { style: "display:flex;gap:8px;align-items:center;margin-top:14px" }, F.reqLogin, "Захиалахад бүртгэл (нэвтрэлт) заавал шаардах"), h("label", {}, "Дээд талын мэдэгдэл", F.banner), msg, h("div", { style: "margin-top:10px" }, sv)),
       h("div", { class: "panel" }, h("h3", {}, "Лого"), h("p", {}, "256px хүртэл шахагдана"), lf, lm),
       h("div", { class: "panel" }, h("h3", {}, "Админ код солих"), h("label", {}, "Одоогийн код", c1), h("label", {}, "Шинэ код (8+ тэмдэгт)", c2), h("label", {}, "Шинэ кодыг давтах", c3), pm, h("div", { style: "margin-top:10px" }, pb)));
   }
   drawSettings();
-  const views = { orders: ordersView, menu: menuView, settings: setView };
+  /* promos */
+  const plist = h("div"), pform = h("div"), savePromos = items => setDoc(doc(db, "settings", "promos"), { items });
+  const promoView = h("div", {}, h("button", { class: "btn", style: "margin:10px 0", onclick: () => pedit(null) }, "+ Сурталчилгаа нэмэх"), h("div", { style: "font-size:13px;color:#7a5a45" }, "Зураг болон текст бүхий сурталчилгаа хэрэглэгчийн хуудасны дээд талд гүйлгэгддэг болж харагдана."), pform, plist);
+  const pmove = (i, j) => { const a = promos.slice(); [a[i], a[j]] = [a[j], a[i]]; savePromos(a).catch(() => alert("Алдаа гарлаа")); };
+  function drawPromos() {
+    clear(plist); if (!promos.length) plist.append(h("div", { class: "empty" }, "Сурталчилгаа байхгүй байна. Жишээ нь «Өнөөдөр хямдралтай!» гэж нэмээрэй."));
+    promos.forEach((p, i) => plist.append(h("div", { class: "mi" }, phBox({ id: "promo_" + p.id, name: p.title, category: "Промо" }), h("div", {}, h("b", {}, p.title || "(гарчиггүй)"), h("div", { style: "font-size:13px" }, (p.text || "").slice(0, 70)), p.show === false ? h("div", { style: "font-size:13px" }, "🙈 нуусан") : null),
+      h("div", { style: "display:flex;flex-direction:column;gap:4px" }, h("div", { class: "row" }, h("button", { class: "btn g s", disabled: i === 0, onclick: () => pmove(i, i - 1) }, "▲"), h("button", { class: "btn g s", disabled: i === promos.length - 1, onclick: () => pmove(i, i + 1) }, "▼")),
+        h("button", { class: "btn l s", onclick: () => pedit(p) }, "Засах"),
+        h("button", { class: "btn g s", onclick: () => savePromos(promos.map(x => x.id === p.id ? { ...x, show: x.show === false } : x)).catch(() => alert("Алдаа гарлаа")) }, p.show === false ? "Харуулах" : "Нуух"),
+        h("button", { class: "btn g s", onclick: async () => { if (!confirm("Устгах уу?")) return; try { await savePromos(promos.filter(x => x.id !== p.id)); try { await deleteDoc(doc(db, "menuImages", "promo_" + p.id)); } catch {} imgCache.delete("promo_" + p.id); } catch { alert("Устгахад алдаа гарлаа"); } } }, "Устгах")))));
+  }
+  function pedit(p) {
+    const ti = h("input", { maxlength: 80, value: p ? p.title || "" : "", placeholder: "Жишээ: Өнөөдөр хямдралтай!" }), tx = h("textarea", { maxlength: 300, placeholder: "Жишээ: Холимог тахиа 10% хямдрал" }, p ? p.text || "" : ""), file = h("input", { type: "file", accept: "image/*" }), prev = h("img", { class: "prev hide", alt: "" }), err = h("div", { class: "err" }); let data = null;
+    if (p) loadImg("promo_" + p.id).then(d => { if (d && !data) { prev.src = d; prev.classList.remove("hide"); } });
+    file.onchange = async () => { err.textContent = ""; if (!file.files[0]) return; try { data = await compress(file.files[0], 900, 150); prev.src = data; prev.classList.remove("hide"); } catch (e) { data = null; file.value = ""; err.textContent = e.message; } };
+    const save = h("button", { class: "btn", onclick: async () => {
+      err.textContent = ""; if (!ti.value.trim() && !tx.value.trim() && !data && !p) return err.textContent = "Гарчиг, текст эсвэл зургийн аль нэгийг оруулна уу";
+      save.disabled = true;
+      try { const id = p ? p.id : Date.now().toString(36), item = { id, title: ti.value.trim(), text: tx.value.trim(), show: p ? p.show !== false : true };
+        if (data) { await setDoc(doc(db, "menuImages", "promo_" + id), { data }); imgCache.set("promo_" + id, data); }
+        await savePromos(p ? promos.map(x => x.id === id ? item : x) : [...promos, item]); clear(pform); } catch (e) { console.error(e); err.textContent = "Хадгалахад алдаа гарлаа"; save.disabled = false; } } }, "Хадгалах");
+    clear(pform).append(h("div", { class: "panel" }, h("h3", {}, p ? "Сурталчилгаа засах" : "Шинэ сурталчилгаа"), h("label", {}, "Гарчиг", ti), h("label", {}, "Текст", tx), h("label", {}, "Зураг (хүсвэл)", file), prev, err, h("div", { class: "row", style: "margin-top:10px" }, save, h("button", { class: "btn g", onclick: () => clear(pform) }, "Болих"))));
+    pform.scrollIntoView({ behavior: "smooth" });
+  }
+  adminPromoHook = drawPromos; drawPromos();
+  const views = { orders: ordersView, menu: menuView, promo: promoView, settings: setView };
   function show() { Object.entries(btns).forEach(([k, b]) => b.classList.toggle("on", k === tab)); clear(content).append(views[tab]); }
   show();
 }
@@ -355,4 +526,4 @@ function adminPanel(root, user) {
 route();
 </script>
 </body>
-</html> 
+</html>
